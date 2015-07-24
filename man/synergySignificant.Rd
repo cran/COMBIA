@@ -2,7 +2,7 @@
 % Please edit documentation in R/COMBIA.R
 \name{synergySignificant}
 \alias{synergySignificant}
-\title{Function "synergySignificant" calculates significant synergy/antagonism combinations and saves synergy/antagonism values.}
+\title{Function "synergySignificant" calculates significant synergy/antagonism concentration combinations and saves synergy/antagonism values.}
 \usage{
 synergySignificant(synergyCalculationLists, noOfRows, noOfCols, xDrug, yDrug,
   cellLine)
@@ -18,13 +18,13 @@ synergySignificant(synergyCalculationLists, noOfRows, noOfCols, xDrug, yDrug,
 
 \item{yDrug}{Name of drug at y-axis.}
 
-\item{cellLine}{Cell line name.}
+\item{cellLine}{Cell line or experiment name.}
 }
 \value{
 Processed data.
 }
 \description{
-Function "synergySignificant" calculates significant synergy/antagonism combinations and saves synergy/antagonism values.
+Function "synergySignificant" calculates significant synergy/antagonism concentration combinations and saves synergy/antagonism values.
 }
 \examples{
 dataFile <- system.file("/raw/rawDataPreProcessed.csv", package="COMBIA")

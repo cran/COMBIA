@@ -3,7 +3,7 @@
 \name{removeOutliers}
 \alias{removeOutliers}
 \title{This function removes outliers from data. Outliers are removed if data have more than two replicates.
-Criteria of outlier is an observation that contributing maximum to data CV when CV is higher than a
+Outlier is defined as an observation that has maximum contribution to data CV when CV is higher than a
 user defined threshold.}
 \usage{
 removeOutliers(arrangeReplicates, minThersholdForCVCal, minThersholdForCV)
@@ -20,7 +20,7 @@ Data with out outliers.
 }
 \description{
 This function removes outliers from data. Outliers are removed if data have more than two replicates.
-Criteria of outlier is an observation that contributing maximum to data CV when CV is higher than a
+Outlier is defined as an observation that has maximum contribution to data CV when CV is higher than a
 user defined threshold.
 }
 \examples{

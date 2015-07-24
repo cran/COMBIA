@@ -2,7 +2,7 @@
 % Please edit documentation in R/COMBIA.R
 \name{applyLoewe}
 \alias{applyLoewe}
-\title{This function calculates Loewe synergy/antagonism values and associated BIs.}
+\title{This function calculates Loewe synergy/antagonism and associated BIs.}
 \usage{
 applyLoewe(rawDataPreProcessed, xConcentration, yConcentration, nBoot)
 }
@@ -16,12 +16,12 @@ applyLoewe(rawDataPreProcessed, xConcentration, yConcentration, nBoot)
 \item{nBoot}{Number of times to bootstrap in order  to calculate BIs.}
 }
 \value{
-Three lists, first list containing Loewe Synergy/Antagonism, lower and upper bound of corresponding BI.
-Second list consists of global BI for maximum synergy observed in the experiment and third list
+Three lists, first containing Loewe Synergy/Antagonism, lower and upper bound of corresponding BI.
+Second list consists of global BI for maximum synergy observed in the experiment and third
 contains global BI of maximum antagonism.
 }
 \description{
-This function calculates Loewe synergy/antagonism values and associated BIs.
+This function calculates Loewe synergy/antagonism and associated BIs.
 }
 \examples{
 library(gdata)

@@ -8,7 +8,7 @@ readMacSynergyValues(file, sheet, nrow = 41, wellRangesExcel,
   minThersholdForCVCal, minThersholdForCV)
 }
 \arguments{
-\item{file}{Name of file to be read.}
+\item{file}{Name of file containing data.}
 
 \item{sheet}{Sheet number in a spread sheet workbook.}
 

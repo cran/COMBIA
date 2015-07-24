@@ -18,7 +18,7 @@ synAntPlot(processedData, xConcentration, yConcentration, xDrug, yDrug,
 
 \item{yDrug}{Y drug name.}
 
-\item{cellLine}{Cell line name.}
+\item{cellLine}{Cell line or experiment name.}
 }
 \value{
 Plot the values.

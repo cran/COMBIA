@@ -31,7 +31,7 @@ calculateSynergy(filename, sheet, model, inputFormates, platetype = "384",
 
 \item{minThersholdForCV}{Optional default is 0.3.}
 
-\item{wells}{wells ranges, these ranges should  be in triplet form that is
+\item{wells}{Defines thes experiment layout in the well ranges, these ranges should  be in triplet form that is
 1-control wells range, 2-empty wells range and 3-case wells range. An experiment
 can have multiple replicates thus having multiple triplicates of well ranges.}
 

@@ -2,7 +2,7 @@ Encoding: UTF-8
 Package: COMBIA
 Type: Package
 Title: Synergy/Antagonism Analyses of Drug Combinations
-Version: 1.0-3
+Version: 1.0-4
 Date: 2015-07-24
 Author: Muhammad Kashif
 Maintainer: Muhammad Kashif <Muhammad.Kashif@medsci.uu.se>
@@ -19,6 +19,6 @@ Imports: grDevices, stats, utils
 License: GPL (>= 2)
 LazyLoad: yes
 NeedsCompilation: no
-Packaged: 2015-07-25 06:07:42 UTC; dawood
+Packaged: 2015-07-26 08:41:27 UTC; dawood
 Repository: CRAN
-Date/Publication: 2015-07-25 11:38:23
+Date/Publication: 2015-07-26 18:53:01

@@ -9,7 +9,6 @@
 ### {}
 
 
-
 # Package gdata  is used to read and write excel file format
 # Package hash   is used for implementation of hash data structure
 # Package lattice and latticeExtra are used for  lattice plots
@@ -185,8 +184,8 @@ startingGuessIC50nH <- function(drugObs_Mean,ConcentrationCleaned )
 ##' This function applies Loewe model.
 ##' @param xConcentration X drug concentrations tested in an experiment.
 ##' @param yConcentration Y drug concentrations tested in an experiment.
-##' @param drugYObs_Mean Concentration wise mean survival of y drug treatments of cells.  
-##' @param drugXObs_Mean Concentration wise mean survival of x drug treatments of cells. 
+##' @param drugYObs_Mean Concentration wise mean survival of y drug treatments.  
+##' @param drugXObs_Mean Concentration wise mean survival of x drug treatments. 
 ##' @return Loewe model values. 
 ##' @examples 
 ##' xConcentration <- c(0.00,0.20, 0.39,  0.78,  1.56, 3.12, 6.25, 12.50, 25.00, 50.0) 
@@ -286,13 +285,13 @@ loeweModel<- function ( xConcentration, yConcentration,
 
 
 
-##' This function calculates Loewe synergy/antagonism values and associated BIs.
+##' This function calculates Loewe synergy/antagonism and associated BIs.
 ##' @param rawDataPreProcessed Raw preprocessed experimental data. 
 ##' @param xConcentration X drug concentrations tested in an experiment.
 ##' @param yConcentration Y drug concentrations tested in an experiment.
 ##' @param nBoot Number of times to bootstrap in order  to calculate BIs.
-##' @return Three lists, first list containing Loewe Synergy/Antagonism, lower and upper bound of corresponding BI.  
-##' Second list consists of global BI for maximum synergy observed in the experiment and third list 
+##' @return Three lists, first containing Loewe Synergy/Antagonism, lower and upper bound of corresponding BI.  
+##' Second list consists of global BI for maximum synergy observed in the experiment and third 
 ##' contains global BI of maximum antagonism.
 ##' @examples
 ##' library(gdata)
@@ -446,7 +445,7 @@ extractValuesFromRange <- function(range, excelFormate)
 ##' @param yConcentration Y drug concentrations.
 ##' @param xDrug X drug name.
 ##' @param yDrug Y drug name.
-##' @param cellLine Cell line name.
+##' @param cellLine Cell line or experiment name.
 ##' @return Plot the values. 
 ##' @examples
 ##' dataFile <- system.file("/raw/processedData.csv", package="COMBIA")
@@ -547,13 +546,13 @@ synAntPlot<- function(processedData, xConcentration, yConcentration, xDrug, yDru
   # End of data saving
   }
 
-##' Function "synergySignificant" calculates significant synergy/antagonism combinations and saves synergy/antagonism values.
+##' Function "synergySignificant" calculates significant synergy/antagonism concentration combinations and saves synergy/antagonism values.
 ##' @param synergyCalculationLists List of synergy/antagonism calculations.
 ##' @param noOfRows Number of rows in the experiment.
 ##' @param noOfCols Number of columns in the experiment.
 ##' @param xDrug Name of drug at x-axis.
 ##' @param yDrug Name of drug at y-axis.
-##' @param cellLine Cell line name.
+##' @param cellLine Cell line or experiment name.
 ##' @return Processed data. 
 ##' @examples
 ##' dataFile <- system.file("/raw/rawDataPreProcessed.csv", package="COMBIA")
@@ -716,7 +715,7 @@ createUniquePertbs <- function(totalNumberofReplicates)
 
 
 ##' This function removes outliers from data. Outliers are removed if data have more than two replicates.
-##' Criteria of outlier is an observation that contributing maximum to data CV when CV is higher than a 
+##' Outlier is defined as an observation that has maximum contribution to data CV when CV is higher than a 
 ##' user defined threshold.
 ##' @param arrangeReplicates A data matrix.
 ##' @param minThersholdForCVCal CV threshold for outlier definition.
@@ -938,24 +937,25 @@ applyBliss <- function(noOfRows, noOfCols, rawDataPreProcessed, nBoot)
 combineDataFromMultipleFiles <- function(yConcentration, xConcentration, replNo, 
                                         file,totalNumberofReplicates, siReplicates )
    {
-    
+
+  
     # Make a big matrix that contain all data
     allY  <-   unique(as.vector(sapply(yConcentration, function(x){as.numeric(x)})))
     allY  <-  allY[order(allY, decreasing=TRUE)] # Keep y concentration in proper order, large to small
     
     allX  <-  unique(as.vector(sapply(xConcentration, function(x){as.numeric(x)})))
     allX  <-  allX[order(allX, decreasing=FALSE)] # Keep x concentratuion in proper order, small to large
-    
     bigDataList <- list("vector", replNo-1)
     bigMatrix <- matrix(rep(0,(length(allX)*length(allY))), nrow= length(allY), ncol=length(allX) )
-  
+
     # Add data of all replicates from all files at proper location in bigMatrix
     replNoNew <- 0
     for (noOfFiles in (1:length(file) )){
       
         curr_xConcentration <- as.vector(xConcentration[[noOfFiles]])
         curr_yConcentration <- as.vector(yConcentration[[noOfFiles]])
-        for (repl in (1:totalNumberofReplicates[noOfFiles] )){ 
+     
+         for (repl in (1:totalNumberofReplicates[noOfFiles] )){ 
           replNoNew<-replNoNew+1;
           # Convert data into matrix column wise
           currentSIData <- matrix(siReplicates[[replNoNew]], nrow=length( unlist(yConcentration[[noOfFiles]] ) ) , ncol=length(xConcentration[[noOfFiles]]) )
@@ -990,7 +990,7 @@ combineDataFromMultipleFiles <- function(yConcentration, xConcentration, replNo,
 
 
 ##' Read data from macSynergyII format and clean for outliers.
-##' @param file Name of file to be read.
+##' @param file Name of file containing data.
 ##' @param sheet Sheet number in a spread sheet workbook.
 ##' @param nrow Number of rows in that sheet to be read.
 ##' @param wellRangesExcel TRUE if input wells ranges are in excel format.
@@ -1025,8 +1025,8 @@ readMacSynergyValues<- function(file, sheet, nrow=41, wellRangesExcel,
         controlValues <- vector("list", totalNumberofReplicates[[cn]])
         emptyValues <-  vector("list", totalNumberofReplicates[[cn]])
         caseValues <-    vector("list", totalNumberofReplicates[[cn]]) 
-        yConcentration[[cn]] <- round(as.numeric(as.matrix(plateData[3:10, 1])),2)
-        xConcentration[[cn]] <- round(as.numeric(as.matrix(plateData[11, 2:11])),2)  
+        yConcentration[[cn]] <- round(as.numeric(as.matrix(plateData[3:10, 1])),3)
+        xConcentration[[cn]] <- round(as.numeric(as.matrix(plateData[11, 2:11])),3)  
         controlValues <-  extractReplicateValues(plateData, wellRangesExcel[[cn]], wellplace=1, excelFormate=TRUE) # extract control wells
         emptyValues   <-  extractReplicateValues(plateData, wellRangesExcel[[cn]], wellplace=2, excelFormate=TRUE) # extract empty wells
         caseValues    <-  extractReplicateValues(plateData, wellRangesExcel[[cn]], wellplace=3, excelFormate=TRUE) # extract case wells
@@ -1131,9 +1131,9 @@ readFMCAValues <- function(file, platetype, keyposition,
 ##' @param minThersholdForCVCal CV threshold for data outliers.
 ##' @param minThersholdForCV Threshold of survival values not used for CV calculations.
 ##' @param survivalFunc A function to calculate survival values, 
-##' by default survival is calculated as, Survival= tereated- background/untreated control-background.
+##' by default survival is calculated as, Survival= treated- background/untreated control-background.
 ##' @param xConcentration Concentrations of drug at x-axis of data.
-##' @param yConcentration Concentrations of drugs at y-axis of data.
+##' @param yConcentration Concentrations of drug at y-axis of data.
 ##' @return Matrix of outlier removed replicates.
 ##' @examples 
 ##' fl <- system.file("/raw/FluoOptima_384_2014-03-28test.xls", package="COMBIA")
@@ -1223,7 +1223,7 @@ readOtherValues<- function(file, sheet,  wellRangesExcel, platetype,
 ##' @param platekey Optional barcode.
 ##' @param minThersholdForCVCal Optional default is 0.15. 
 ##' @param minThersholdForCV Optional default is 0.3.
-##' @param wells  wells ranges, these ranges should  be in triplet form that is 
+##' @param wells  Defines thes experiment layout in the well ranges, these ranges should  be in triplet form that is 
 ##' 1-control wells range, 2-empty wells range and 3-case wells range. An experiment
 ##' can have multiple replicates thus having multiple triplicates of well ranges.
 ##' @param yConcentration Y drug concentrations.
@@ -1766,8 +1766,6 @@ readFluostarPlates <- function(filename, separator=",", noofrows_skip=0, sheet="
     survivalindeces <- calculatesi(hashedplates, platekey, platetype, rowsperexperiment, wells )    
   
   }
-
-
 
 
 

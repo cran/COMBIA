@@ -11,9 +11,9 @@ loeweModel(xConcentration, yConcentration, drugYObs_Mean, drugXObs_Mean)
 
 \item{yConcentration}{Y drug concentrations tested in an experiment.}
 
-\item{drugYObs_Mean}{Concentration wise mean survival of y drug treatments of cells.}
+\item{drugYObs_Mean}{Concentration wise mean survival of y drug treatments.}
 
-\item{drugXObs_Mean}{Concentration wise mean survival of x drug treatments of cells.}
+\item{drugXObs_Mean}{Concentration wise mean survival of x drug treatments.}
 }
 \value{
 Loewe model values.

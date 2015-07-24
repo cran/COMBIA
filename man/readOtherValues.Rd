@@ -21,11 +21,11 @@ readOtherValues(file, sheet, wellRangesExcel, platetype, minThersholdForCVCal,
 \item{minThersholdForCV}{Threshold of survival values not used for CV calculations.}
 
 \item{survivalFunc}{A function to calculate survival values,
-by default survival is calculated as, Survival= tereated- background/untreated control-background.}
+by default survival is calculated as, Survival= treated- background/untreated control-background.}
 
 \item{xConcentration}{Concentrations of drug at x-axis of data.}
 
-\item{yConcentration}{Concentrations of drugs at y-axis of data.}
+\item{yConcentration}{Concentrations of drug at y-axis of data.}
 }
 \value{
 Matrix of outlier removed replicates.
