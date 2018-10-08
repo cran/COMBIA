@@ -1,6 +1,6 @@
-2cb184eaa9da5047188f349f6e8f2849 *DESCRIPTION
+4fbe3e028fe2e3e1ffc51381f1856690 *DESCRIPTION
 a91cf4fe90a5a1cc69e2576c6b65db07 *NAMESPACE
-619fe1970c982efdf76af5324627caa6 *R/COMBIA.R
+9fa26487b03414ccd5f82821d698d7ce *R/COMBIA.R
 0381af0bc61a595b799a33966385ff29 *inst/CITATION
 05eb87c6c9887c83502345a3da708b51 *inst/extdata/FluoOptima_384_2014-03-28test.csv
 27111f488fa7fe0e6df2e4c9536379f4 *inst/extdata/FluoOptima_384_2014-03-28test.txt
@@ -10,8 +10,8 @@ a91cf4fe90a5a1cc69e2576c6b65db07 *NAMESPACE
 8cb8ff434ff16ac09bbaff3cd317e0ee *inst/extdata/rawDataPreProcessed.csv
 1b5888ce10624fa1c45bb3d524e1c1fb *inst/extdata/testData.csv
 789597f3d013cfced5fb9b88b950e2d2 *inst/extdata/testData_M.xlsx
-3302a7d4a1dd7b15bd3412cf287f694b *man/analyzeCOMBO.Rd
-b2180986fa65f4ed838a4b05e09dd008 *man/applyBliss.Rd
+3e9da888dc2a204fa9966c16108d1867 *man/analyzeCOMBO.Rd
+8ec727b924c8e27cc962eee493b3f121 *man/applyBliss.Rd
 dcfac0445e606b47595157989e8439f5 *man/applyLoewe.Rd
 1fa01cd55943975c144b534a067e5c86 *man/cVCal.Rd
 3698046460fd233188edbc30c9b6200e *man/calculateSi.Rd

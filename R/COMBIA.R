@@ -565,7 +565,8 @@ synAntPlot<- function(processedData, xConcentration, yConcentration, xDrug, yDru
                                                                            ))
     # Print Formated plot
     print(objectSynAntPlotUpdated)
-  
+    
+    #Data saving code is removed due to change in the Cran policy 2018-10-07  
     myPathRoot<- system.file( package="COMBIA")
     #Add prefiX Combined_AnalyzedData
     myPath <- paste(myPathRoot,   "AnalyzedData_", sep="")
@@ -576,9 +577,9 @@ synAntPlot<- function(processedData, xConcentration, yConcentration, xDrug, yDru
     myPath <- paste(myPath,   cellLine, sep="")
     myPath2 <- paste(myPath,   "_3D.png", sep="")
     myPath <- paste(myPath,   ".png", sep="")
-    png(filename=myPath, width=800, height=600)
-    print(objectSynAntPlotUpdated)
-    dev.off()
+    #png(filename=myPath, width=800, height=600) #Data saving code is removed 2018-10-07
+    #print(objectSynAntPlotUpdated) #Data saving code is removed 2018-10-07
+    #dev.off() #Data saving code is removed 2018-10-07
 
   # For 3D graphs
       processedDataMat<-as.matrix(processedData)
@@ -610,9 +611,9 @@ synAntPlot<- function(processedData, xConcentration, yConcentration, xDrug, yDru
     
   print(hUpdated)
   
-  png(myPath2, width=850, height=600)
-  print(hUpdated)
-  dev.off()
+  #png(myPath2, width=850, height=600) #Data saving code is removed 2018-10-07
+  #print(hUpdated) #Data saving code is removed 2018-10-07
+  #dev.off() #Data saving code is removed 2018-10-07
   
   print(as.matrix(processedData))
   
@@ -671,7 +672,7 @@ synergySignificant <- function(synergyCalculationLists, noOfRows, noOfCols, xDru
   
   
   myPathRoot <- system.file(  package="COMBIA")
-  
+  #Data saving code is removed due to change in crean policy 2018-10-07
   myPath <- paste(myPathRoot,   "AnalyzedData_", sep="")
   myPath <- paste(myPath,   xDrug, sep="")
   myPath <- paste(myPath,   "_", sep="")
@@ -679,7 +680,7 @@ synergySignificant <- function(synergyCalculationLists, noOfRows, noOfCols, xDru
   myPath <- paste(myPath,   "_", sep="")
   myPath <- paste(myPath,   cellLine, sep="")
   myPath <- paste(myPath,   ".csv", sep="")
-  write.csv(100*processedData, file=myPath )
+  #write.csv(100*processedData, file=myPath ) #Data saving code is removed 2018-10-07
   
   
   #Save Global CIS for Synergy and Antagonism
@@ -693,7 +694,8 @@ synergySignificant <- function(synergyCalculationLists, noOfRows, noOfCols, xDru
   myPath <- paste(myPath,   "_", sep="")
   myPath <- paste(myPath,"CIs", sep="")
   myPath <- paste(myPath,   ".csv", sep="")
-  write.csv(100*c(CIForBestSynergy, CIForBestAntagonism), file=myPath )
+  #Data saving code is removed 2018-10-07
+  # write.csv(100*c(CIForBestSynergy, CIForBestAntagonism), file=myPath ) #Data saving code is removed 2018-10-07
   
   
   #Save local well statistical data for Synergy and Antagonism
@@ -707,7 +709,7 @@ synergySignificant <- function(synergyCalculationLists, noOfRows, noOfCols, xDru
   myPath <- paste(myPath,   "_", sep="")
   myPath <- paste(myPath,"LocalData", sep="")
   myPath <- paste(myPath,   ".csv", sep="")
-  write.csv(100*synergy_Calculation_Matrix, file=myPath )
+  #write.csv(100*synergy_Calculation_Matrix, file=myPath ) #Data saving code is removed 2018-10-07
   
   return(processedData)
 }# End of synergySignificant
@@ -893,7 +895,7 @@ removeOutliers <- function(arrangeReplicates, minThersholdForCVCal, minThershold
   }# End OF VARIABLITY CHECKING FUNCTION
 
 
-#' Function calculates of Bliss Synergy, associated BIs and global BIs
+#' Function calculates Bliss Synergy, associated BIs and global BIs
 #' @param noOfRows Number of rows in the experiment
 #' @param noOfCols Number of columns in the experiment
 #' @param rawDataPreProcessed Data matrix 
@@ -1400,7 +1402,7 @@ readOtherValues <- function(file, sheet, rskip=0, cStart=1, wellRangesExcel, pla
 
 
 #' This function calculates significant synergy/antagonism according to Bliss or Loewe model 
-#' and saves scientific publication ready graphs.    
+#' and creates scientific publication ready graphs.    
 #' @param filename Name of file containing experimental data.
 #' For MS Excel files, working version of Perl must be present in the executable search path.
 #' @param sheet Optional, sheet number if excel file is used for input.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/COMBIA.R
 \name{applyBliss}
 \alias{applyBliss}
-\title{Function calculates of Bliss Synergy, associated BIs and global BIs}
+\title{Function calculates Bliss Synergy, associated BIs and global BIs}
 \usage{
 applyBliss(noOfRows, noOfCols, rawDataPreProcessed, nBoot)
 }
@@ -21,7 +21,7 @@ upper bound of BI. 2nd list consists of global BI of Maximun synergistic combian
 consists of global BI of maximum antagonistic combination.
 }
 \description{
-Function calculates of Bliss Synergy, associated BIs and global BIs
+Function calculates Bliss Synergy, associated BIs and global BIs
 }
 \examples{
 dataFile <- system.file( "extdata", "rawDataPreProcessed.csv", package="COMBIA" )

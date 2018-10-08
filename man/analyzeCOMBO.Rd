@@ -3,7 +3,7 @@
 \name{analyzeCOMBO}
 \alias{analyzeCOMBO}
 \title{This function calculates significant synergy/antagonism according to Bliss or Loewe model 
-and saves scientific publication ready graphs.}
+and creates scientific publication ready graphs.}
 \usage{
 analyzeCOMBO(filename, sheet = 1, model, inputFormates, platetype = "384",
   keyposition = 2, selectionkey = "65000", platekey = 7051,
@@ -63,7 +63,7 @@ Stores and show graph/data of synergy/antagonism analyses
 }
 \description{
 This function calculates significant synergy/antagonism according to Bliss or Loewe model 
-and saves scientific publication ready graphs.
+and creates scientific publication ready graphs.
 }
 \examples{
 fl <- system.file("extdata", "testData.csv", package="COMBIA")
